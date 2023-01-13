@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class FailureRate {
@@ -19,17 +20,24 @@ public class FailureRate {
             UsersInStage[fe] = (int)Arrays.stream(stages).filter(fl -> fl == fe).count();
         });
 
-        HashMap<Integer, Double> maps = new HashMap<>();
+        var maps2 = IntStream.rangeClosed(1,N)
+                .boxed()
+                .collect(Collectors
+                        .toMap(key->key,
+                                values ->usersToX(UsersInStage, values, stages.length) == 0
+                                        ? 0.0
+                                        :(double) UsersInStage[values] / (double) usersToX(UsersInStage, values, stages.length)));
 
-        IntStream.rangeClosed(1,N).boxed().forEach(fe->{
-            Double garbage = usersToX(UsersInStage, fe, stages.length) == 0 ? maps.put(fe, 0.0) : maps.put(fe, (double) UsersInStage[fe] / (double) usersToX(UsersInStage, fe, stages.length));
-        });
-
-        return maps.keySet().stream().sorted(Comparator.comparingDouble(maps::get).reversed()).mapToInt(mp->mp).toArray();
+        return maps2.keySet()
+                .stream()
+                .sorted(Comparator.comparingDouble(maps2::get).reversed())
+                .mapToInt(mp->mp)
+                .toArray();
     }
 
     public int usersToX(int[] array, int x, int stagelength){
         return stagelength - IntStream.rangeClosed(1,x-1).map(mp->array[mp]).sum();
     }
 }
+
 
