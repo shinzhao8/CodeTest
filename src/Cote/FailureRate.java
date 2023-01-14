@@ -28,6 +28,10 @@ public class FailureRate {
                                         ? 0.0
                                         :(double) UsersInStage[values] / (double) usersToX(UsersInStage, values, stages.length)));
 
+
+
+        asdfghjk;
+
         return maps2.keySet()
                 .stream()
                 .sorted(Comparator.comparingDouble(maps2::get).reversed())
