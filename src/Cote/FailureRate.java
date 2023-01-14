@@ -14,11 +14,12 @@ public class FailureRate {
     // └ N번 스테이지 유저 수 / 전체 유저 수 - (N번 이전까지의 유저 수)
     //
     public int[] solution(int N, int[] stages) {
-        int[] UsersInStage = new int[N+1];
 
-        IntStream.rangeClosed(1,N).boxed().forEach(fe ->{
-            UsersInStage[fe] = (int)Arrays.stream(stages).filter(fl -> fl == fe).count();
-        });
+
+        int[] UsersInStage = IntStream.rangeClosed(0,N)
+                .boxed()
+                .mapToInt(mp->(int)Arrays.stream(stages).filter(fl -> fl == mp).count())
+                .toArray();
 
         var maps2 = IntStream.rangeClosed(1,N)
                 .boxed()
