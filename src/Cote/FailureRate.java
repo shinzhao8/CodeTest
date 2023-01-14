@@ -15,6 +15,7 @@ public class FailureRate {
     //
     public int[] solution(int N, int[] stages) {
 
+        final int a = 1;
 
         int[] UsersInStage = IntStream.rangeClosed(0,N)
                 .boxed()
@@ -28,6 +29,7 @@ public class FailureRate {
                                 values ->usersToX(UsersInStage, values, stages.length) == 0
                                         ? 0.0
                                         :(double) UsersInStage[values] / (double) usersToX(UsersInStage, values, stages.length)));
+
 
         return maps2.keySet()
                 .stream()
