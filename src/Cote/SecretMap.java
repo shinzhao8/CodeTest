@@ -33,10 +33,8 @@ public class SecretMap {
         return "0".repeat(n-str.length()) + str;
     }
 
-    public String toBlankOrSharp(String arr){
-        arr = arr.replace("1", "#");
-        arr = arr.replace("0", " ");
-        return arr;
+    public String toBlankOrSharp(String str){
+        return str.replace("1", "#").replace("0", " ");
     }
 
 }
