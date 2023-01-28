@@ -1,13 +1,10 @@
-import Cote.FailureRate;
-import Cote.Hamberger;
-import Cote.SecretMap;
+import Cote.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        hamberger();
+        hamburger();
 
     }
 
@@ -26,11 +23,24 @@ public class Main {
 
         System.out.println(Arrays.toString(secretMap.solution(5, arr1, arr2)));
     }
-    public static void hamberger(){
+    public static void hamburger(){
 
-        Hamberger hamberger = new Hamberger();
+        Hamburger hamburger = new Hamburger();
         int[] array = {2, 1, 1, 2, 3, 1, 2, 3, 1};
 
-        System.out.println(hamberger.solution(array));
+        System.out.println(hamburger.solution(array));
+    }
+
+    public static void dartGame(){
+        DartGame dartGame = new DartGame();
+        String str = "1S2S*3T";
+
+        System.out.println(dartGame.solution(str));
+    }
+    public static void foodFight(){
+        FoodFight foodFight = new FoodFight();
+        int[] ary = {1,3,7,4};
+
+        System.out.println(foodFight.solution(ary));
     }
 }
