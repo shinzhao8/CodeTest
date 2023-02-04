@@ -6,7 +6,7 @@ public class FoodFight {
 
         for(int i=1; i<food.length; i++){
             sb.append(food[i]==0||food[i]==1 ? "" :(""+i).repeat(food[i]/2));
-        }   
+        }
 
 
         var string = sb.reverse().toString();

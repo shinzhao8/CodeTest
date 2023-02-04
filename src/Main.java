@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        hamburger();
-
+        //hamburger();
+        cipher();
     }
 
     public static void failureRate(){
@@ -42,5 +42,11 @@ public class Main {
         int[] ary = {1,3,7,4};
 
         System.out.println(foodFight.solution(ary));
+    }
+    public static void cipher(){
+        Couples_Cipher cc = new Couples_Cipher();
+
+
+        System.out.println(cc.solution("aukks","wbqdzxcvnmlpoijh",20));
     }
 }
